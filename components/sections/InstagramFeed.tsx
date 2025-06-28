@@ -60,7 +60,7 @@ export function InstagramFeed() {
             Instagram
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
-            Follow the Journey
+            Follow the <span className="text-purple-600">Journey</span>
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
             Get a behind-the-scenes look at the artistic process and latest creations

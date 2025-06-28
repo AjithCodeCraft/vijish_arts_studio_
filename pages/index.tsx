@@ -33,14 +33,14 @@ export default function Home() {
           <Header onCartClick={() => setIsCartOpen(true)} />
           <main>
             <Hero />
-            <FeaturedWorks />
             <Portfolio />
+            <FeaturedWorks />
             <Services />
-            <About />
+   
             <Testimonials />
             <InstagramFeed />
             <Contact />
-            <Newsletter />
+            {/* <Newsletter /> */}
           </main>
           <Footer />
           <ProductModal />

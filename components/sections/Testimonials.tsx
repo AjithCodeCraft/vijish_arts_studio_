@@ -90,7 +90,7 @@ export function Testimonials() {
             Testimonials
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
-            What Clients Say
+            What <span className="text-purple-600">Clients Say</span>
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
             Read what our satisfied clients have to say about their portrait experience

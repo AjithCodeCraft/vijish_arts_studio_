@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Instagram, Youtube, Twitter, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Contact() {
@@ -37,11 +37,14 @@ export function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleWhatsAppContact = () => {
-    const phoneNumber = "919876543210";
-    const message = "Hi! I'm interested in commissioning a portrait. Could you please provide more details about your services?";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const handleSocialMediaClick = (platform: string) => {
+    const urls: Record<string, string> = {
+      instagram: "https://instagram.com/yourusername",
+      youtube: "https://youtube.com/yourchannel",
+      twitter: "https://twitter.com/yourhandle",
+      whatsapp: "https://wa.me/919876543210"
+    };
+    window.open(urls[platform], '_blank');
   };
 
   if (isSubmitted) {
@@ -60,13 +63,19 @@ export function Contact() {
               Thank You!
             </h2>
             <p className="text-xl text-stone-600 mb-8">
-              Your message has been sent successfully. I'll get back to you within 24 hours.
+              Your message has been sent. Follow me for daily content updates!
             </p>
-            <Button 
-              onClick={() => setIsSubmitted(false)}
-              variant="outline"
-              className="border-purple-200 text-purple-600 hover:bg-purple-50"
-            >
+            <div className="flex justify-center gap-4 mb-8">
+              <Button variant="outline" onClick={() => handleSocialMediaClick('instagram')}>
+                <Instagram className="w-4 h-4 mr-2" />
+                Instagram
+              </Button>
+              <Button variant="outline" onClick={() => handleSocialMediaClick('youtube')}>
+                <Youtube className="w-4 h-4 mr-2" />
+                YouTube
+              </Button>
+            </div>
+            <Button onClick={() => setIsSubmitted(false)} variant="outline">
               Send Another Message
             </Button>
           </motion.div>
@@ -78,7 +87,6 @@ export function Contact() {
   return (
     <section id="contact" className="py-20 bg-stone-50">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,87 +94,82 @@ export function Contact() {
           className="text-center mb-16"
         >
           <Badge className="mb-4 bg-purple-100 text-purple-700 hover:bg-purple-100">
-            Contact
+            Connect With Me
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
-            Let's Create Together
+            Let's Create Something <span className="text-purple-600">Amazing</span>
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
-            Ready to commission your perfect portrait? Get in touch and let's discuss your vision.
+            Reach out for collaborations or just to say hello!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Contact Form Card */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="lg:col-span-2"
           >
-            <Card className="shadow-lg border-0">
+            <Card className="shadow-sm border border-stone-200 h-[510px]">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-stone-900 flex items-center">
-                  <Mail className="w-6 h-6 mr-3 text-purple-600" />
+                <CardTitle className="text-xl font-bold flex items-center gap-2">
+                  <Send className="w-5 h-5 text-purple-600" />
                   Send a Message
                 </CardTitle>
+                <CardDescription>
+                  Fill out the form and I'll get back to you soon
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name *</Label>
+                      <Label htmlFor="firstName">First Name</Label>
                       <Input
                         id="firstName"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        placeholder="Enter your first name"
                         required
-                        className="border-stone-200 focus:border-purple-400"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name *</Label>
+                      <Label htmlFor="lastName">Last Name</Label>
                       <Input
                         id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        placeholder="Enter your last name"
                         required
-                        className="border-stone-200 focus:border-purple-400"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="Enter your email address"
                       required
-                      className="border-stone-200 focus:border-purple-400"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your portrait vision, preferred style, timeline, and any specific requirements..."
-                      rows={6}
+                      rows={4}
                       required
-                      className="border-stone-200 focus:border-purple-400 resize-none"
                     />
                   </div>
-
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button 
                       type="submit" 
@@ -191,98 +194,110 @@ export function Contact() {
             </Card>
           </motion.div>
 
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            {/* Contact Details */}
-            <Card className="shadow-lg border-0">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-stone-900">
-                  Get in Touch
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-purple-600" />
+          {/* Right Side Cards */}
+          <div className="space-y-6">
+            {/* Contact Info Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Card className="shadow-sm border border-stone-200">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-purple-600" />
+                    Get in Touch
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-purple-100 rounded-full">
+                      <Phone className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-stone-500">Phone/WhatsApp</p>
+                      <p className="font-medium">+91 98765 43210</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-stone-900">Email</p>
-                    <p className="text-stone-600">hello@vijisharts.com</p>
-                  </div>
-                </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-purple-600" />
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-purple-100 rounded-full">
+                      <Mail className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-stone-500">Email</p>
+                      <p className="font-medium">hello@yourart.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-stone-900">Phone</p>
-                    <p className="text-stone-600">+91 98765 43210</p>
-                  </div>
-                </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-purple-600" />
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-purple-100 rounded-full">
+                      <MapPin className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-stone-500">Location</p>
+                      <p className="font-medium">Kerala, India</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-stone-900">Location</p>
-                    <p className="text-stone-600">Kerala, India</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            {/* WhatsApp Contact */}
-            <Card className="shadow-lg border-0 bg-green-50">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MessageCircle className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-stone-900 mb-2">
-                    Quick Response on WhatsApp
-                  </h3>
-                  <p className="text-stone-600 mb-4">
-                    Need a faster response? Message me directly on WhatsApp for immediate assistance.
-                  </p>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button 
-                      onClick={handleWhatsAppContact}
-                      className="bg-green-600 hover:bg-green-700 text-white"
-                    >
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Chat on WhatsApp
-                    </Button>
-                  </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Response Time */}
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-lg font-semibold text-stone-900 mb-4">Response Time</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-stone-600">Email</span>
-                  <span className="text-purple-600 font-medium">Within 24 hours</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-stone-600">WhatsApp</span>
-                  <span className="text-green-600 font-medium">Within 2 hours</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-stone-600">Phone</span>
-                  <span className="text-blue-600 font-medium">9 AM - 6 PM IST</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            {/* Social Media Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Card className="shadow-sm border border-stone-200">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold flex items-center gap-2">
+                    <Instagram className="w-5 h-5 text-purple-600" />
+                    Follow Me
+                  </CardTitle>
+                  <CardDescription>
+                    For daily content and updates
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-2 gap-3">
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleSocialMediaClick('instagram')}
+                    className="flex items-center gap-2"
+                  >
+                    <Instagram className="w-4 h-4 text-pink-600" />
+                    Instagram
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleSocialMediaClick('youtube')}
+                    className="flex items-center gap-2"
+                  >
+                    <Youtube className="w-4 h-4 text-red-600" />
+                    YouTube
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleSocialMediaClick('twitter')}
+                    className="flex items-center gap-2"
+                  >
+                    <Twitter className="w-4 h-4 text-blue-500" />
+                    Twitter
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleSocialMediaClick('whatsapp')}
+                    className="flex items-center gap-2"
+                  >
+                    <MessageCircle className="w-4 h-4 text-green-600" />
+                    WhatsApp
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

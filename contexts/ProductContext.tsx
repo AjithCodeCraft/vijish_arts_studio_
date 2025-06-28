@@ -74,7 +74,21 @@ const initialProducts: Product[] = [
     size: "Print Ready",
     isAvailable: true,
     createdAt: new Date().toISOString()
+  },
+  {
+    id: '5',
+    title: "Digital Portrait",
+    description: "Digital artwork with traditional art influence and modern techniques.",
+    price: 2000,
+    image: "/IMG-20250624-WA0023.jpg",
+    category: "Digital Art",
+    medium: "Digital",
+    size: "Print Ready",
+    isAvailable: true,
+    createdAt: new Date().toISOString()
   }
+
+  
 ];
 
 export function ProductProvider({ children }: { children: ReactNode }) {

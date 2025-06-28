@@ -19,8 +19,8 @@ export function Header({ onCartClick }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-55 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-aut">
+        <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="relative">

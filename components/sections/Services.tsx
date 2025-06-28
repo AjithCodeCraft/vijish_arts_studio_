@@ -72,7 +72,7 @@ export function Services() {
             Services
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
-            Artistic Services
+            Artistic <span className="text-purple-600">Services</span>
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
             Professional portrait services tailored to capture your most cherished memories

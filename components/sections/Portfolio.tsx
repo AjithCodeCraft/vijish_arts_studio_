@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Eye, Heart, MessageCircle, ZoomIn } from 'lucide-react';
 import { useProducts } from '@/contexts/ProductContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { About } from './About';
 
 const categories = ["All", "Pencil Art", "Charcoal Art", "Mixed Media", "Digital Art"];
 
@@ -44,7 +45,7 @@ export function Portfolio() {
             Portfolio
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8">
-            My Artistic Journey
+            My <span className="text-purple-600">Artistic Journey</span> 
           </h2>
           <div className="max-w-4xl mx-auto mb-12">
             <p className="text-xl text-stone-600 leading-relaxed mb-6">
@@ -213,7 +214,7 @@ export function Portfolio() {
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
-              Memorable Achievements
+              Memorable <span className="text-purple-600">Achievements</span>
             </h3>
             <p className="text-lg text-stone-600 max-w-2xl mx-auto">
               A visual journey through exhibitions, awards, and milestone moments that have shaped my artistic career
@@ -279,7 +280,7 @@ export function Portfolio() {
             </motion.div>
 
             {/* Additional achievement items */}
-            <motion.div 
+            {/* <motion.div 
               whileHover={{ scale: 1.05 }}
               className="relative aspect-square overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center"
             >
@@ -297,9 +298,9 @@ export function Portfolio() {
                 <div className="text-3xl font-bold text-blue-600 mb-2">5+</div>
                 <p className="text-sm text-blue-700 font-medium">Years Experience</p>
               </div>
-            </motion.div>
+            </motion.div> */}
 
-            <motion.div 
+            {/* <motion.div 
               whileHover={{ scale: 1.05 }}
               className="relative aspect-square overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center"
             >
@@ -307,9 +308,9 @@ export function Portfolio() {
                 <div className="text-3xl font-bold text-green-600 mb-2">300+</div>
                 <p className="text-sm text-green-700 font-medium">Happy Clients</p>
               </div>
-            </motion.div>
+            </motion.div> */}
 
-            <motion.div 
+            {/* <motion.div 
               whileHover={{ scale: 1.05 }}
               className="relative aspect-square overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center"
             >
@@ -317,7 +318,7 @@ export function Portfolio() {
                 <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
                 <p className="text-sm text-orange-700 font-medium">Satisfaction</p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </motion.div>
 
@@ -338,6 +339,7 @@ export function Portfolio() {
             </Button>
           </motion.div>
         </motion.div>
+          <About />
       </div>
     </section>
   );
