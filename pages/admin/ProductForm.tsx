@@ -180,3 +180,4 @@ export function ProductForm() {
     </motion.div>
   );
 }
+export default ProductForm;

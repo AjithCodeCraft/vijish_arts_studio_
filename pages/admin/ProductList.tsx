@@ -99,3 +99,4 @@ export function ProductList() {
     </div>
   );
 }
+export default ProductList;
