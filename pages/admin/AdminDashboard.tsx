@@ -134,4 +134,5 @@ categories: Array.from(new Set(products.map(p => p.category))).length  };
       </div>
     </div>
   );
-}
+};
+export default AdminDashboard;
